@@ -34,7 +34,7 @@ describe("sum", () => {
   // When passed to the sum function
   // Then it should return the correct total sum
   test("given an array with decimal/float numbers, return the correct total sum", () => {
-    expect(sum([1.0, 1.2, 1.5])).toBe(3.7);
+    expect(sum([1.0, 1.2, 1.5])).toBeCloseTo(3.7);
   });
   // Given an array containing non-number values
   // When passed to the sum function
@@ -47,5 +47,21 @@ describe("sum", () => {
   // Then it should return the least surprising value given how it behaves for all other inputs
   test("given an array with only non-number values, return the least surprising value given how it behaves for all other inputs", () => {
     expect(sum(["hi", true, null, undefined])).toBe(0);
+  });
+  // Extreme Cases
+  test("given an array with Infinity and a number, returns Infinity", () => {
+    expect(sum([Infinity, 1])).toBe(Infinity);
+  });
+
+  test("given an array with multiple Infinities, returns Infinity", () => {
+    expect(sum([Infinity, Infinity])).toBe(Infinity);
+  });
+
+  test("given an array with NaN and a number, skips NaN and returns the sum of valid numbers", () => {
+    expect(sum([NaN, 1])).toBe(1);
+  });
+
+  test("given an array with Infinity and -Infinity, returns NaN", () => {
+    expect(sum([Infinity, -Infinity])).toBeNaN();
   });
 });
