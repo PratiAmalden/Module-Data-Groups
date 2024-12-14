@@ -152,6 +152,12 @@ body {
   background: #87ca8a;
 }
 
+#reading-list img {
+  width: 100px;
+  height: auto;
+}
+
+
 @media screen and (min-width: 992px) {
   .navbar-brand > img {
     max-height: 80px;
