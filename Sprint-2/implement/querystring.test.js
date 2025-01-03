@@ -20,6 +20,7 @@ const parseQueryString = require("./querystring.js")
 
   test("handles keys with no value", () => {
     expect(parseQueryString("flag")).toEqual({ flag: null });
+    expect(parseQueryString("A%20B")).toEqual({"A B": null});
   });
 
   test("handles empty query string", () => {

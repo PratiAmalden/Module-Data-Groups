@@ -13,7 +13,8 @@ function parseQueryString(queryString) {
 
     if (indexOfEqual === -1) {
       // handling key with no value
-      queryParams[pair] = null;
+      const key = decodeURIComponent(pair.trim());
+      queryParams[key] = null;
     } else {
       const key = decodeURIComponent(pair.slice(0, indexOfEqual));
       const value = decodeURIComponent(pair.slice(indexOfEqual + 1));
